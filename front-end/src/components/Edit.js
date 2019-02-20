@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios';
 import moment from 'moment';
-import {Link} from 'react-router-dom';
 
 class Edit extends Component {
     constructor(){
@@ -58,8 +57,9 @@ class Edit extends Component {
             },
             url: `http://localhost:3000/edit/`
         })
-        .then((JSONData)=>{
-            console.log(JSONData.data)
+        .then((dataReceived)=>{
+            // console.log(JSONData.data)
+            if (dataReceived.data.msg === "Updated") this.props.history.push('/')
         })
     }
 
@@ -69,7 +69,6 @@ class Edit extends Component {
                 <form onSubmit={this.editTask} className="add-box">
                     <input onChange={this.changeTask}type="text" id="new-task"  value={this.state.task.taskName} placeholder="New Task" />
                     <input onChange={this.changeDate}type="date" id="new-task-date" value={moment(this.state.task.taskDate).format('YYYY-MM-DD')}  />
-                    {/* <Link to="/"><button type="submit" className="btn btn-primary">Update</button></Link> */}
                     <button type="submit" className="btn btn-primary">Update</button>
                 </form>            
             </div>
