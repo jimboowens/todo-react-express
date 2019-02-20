@@ -30,6 +30,7 @@ import {Link} from 'react-router-dom';
 
     render(){
         const taskArray = this.props.taskList.map((task)=>{
+            // test to see what's wrong
             return(
                 <tr key={task.id}>
                   <td>{task.taskName} --- {moment(task.taskDate).format('MMMM Do, YYYY')}</td>
