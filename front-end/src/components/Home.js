@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import moment from 'moment';
+import {Link} from 'react-router-dom';
 
  class Home extends Component{
     constructor(){
@@ -30,9 +32,9 @@ import React, {Component} from 'react';
         const taskArray = this.props.taskList.map((task)=>{
             return(
                 <tr key={task.id}>
-                  <td>{task.taskName} - {task.taskDate}</td>
+                  <td>{task.taskName} --- {moment(task.taskDate).format('MMMM Do, YYYY')}</td>
                   <td><button className="btn red"><i className="material-icons">delete</i></button></td>
-                  <td><button className="btn blue"><i className="material-icons">edit</i></button></td>
+                  <td><Link to={"/edit/"+task.id}><button className="btn blue"><i className="material-icons">edit</i></button></Link></td>
                 </tr>
             )
           })
@@ -50,7 +52,7 @@ import React, {Component} from 'react';
                     <form onSubmit={this.addNewTask} className="add-box"> {/* this is done when the user presses enter */}
                         <input onChange={this.changeTask} type="text" id="new-task" placeholder="New Task" value={this.state.task}/> {/* this is run whenever a change is made; making a rerender run, but the only change is in the virtual dom so the real dom doesn't run */}
                         <input onChange={this.changeDate} type="date" id="new-task-date" value={this.state.date}/> {/* this is run whenever a change is made; making a rerender run, but the only change is in the virtual dom so the real dom doesn't run */}
-                        {this.state.task.length>0&&this.state.date.length>0 ? <button type="submit" className="btn btn-primary waves-effect">Add Task</button> : <button type="submit" className="no-click btn btn-primary waves-effect">Add Task</button>} {/* this means the ability to submit will only happen if the two inputs are populated. */}
+                        {this.state.task.length>0&&this.state.date.length>0 ? <button type="submit" className="btn btn-primary waves-effect">Add Task</button> : <button type="submit" className="no-click btn">Add Task</button>} {/* this means the ability to submit will only happen if the two inputs are populated. */}
                     </form>
                 <table className="table table-bordered">
                     <thead>

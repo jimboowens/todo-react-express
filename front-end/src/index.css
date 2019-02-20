@@ -15,4 +15,5 @@ code {
 
 .no-click{
   pointer-events:none;
+  background-color: gray;
 }
