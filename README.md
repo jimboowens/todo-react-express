@@ -1,4 +1,4 @@
-#This is our second go at a to do list
+#This is our second go at a to do list#
 
 While we have done a todo application already, we have learned a significant amount since. 
 This application puts together both back and front ends, and links to the mysql database
